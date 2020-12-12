@@ -1,0 +1,27 @@
+{
+  "name": "api-tasks-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "SET NODE_ENV=development&& nodemon --exec node -r esm ./bin/www",
+    "start": "SET NODE_ENV=production&& node -r esm ./bin/www",
+    "test": "SET NODE_ENV=test&& mocha -r esm ./tests/*.js --timeout 10000 --exit"
+  },
+  "author": "Santiago",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "config": "^3.3.3",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.7",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "esm": "^3.2.25",
+    "mocha": "^8.2.1",
+    "supertest": "^6.0.1"
+  }
+}

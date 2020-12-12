@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+const app = require('../app').default;
+const config = require("config");
+
+const PORT = config.get('SERVER_CONFIG.PORT');
+const env = config.util.getEnv('NODE_ENV');
+
+app.set('port', PORT);
+
+if(env !== 'production') {
+   app.listen(app.get('port'), () => {
+      console.log(`> Server listening on port ${app.get('port')}`);
+   })
+}
