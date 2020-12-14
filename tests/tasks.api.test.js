@@ -1,9 +1,9 @@
 const request = require('supertest');
-const should = require('chai').should()
+const expect = require('chai').expect;
 const config = require('config');
 const app = require('../app').default;
 
-const { taskDummy } = require('./dummy');
+const { taskDummies } = require('./dummy');
 const TaskModel = require('../components/tasks/schema').default;
 
 const db = require('mongoose');
@@ -11,8 +11,8 @@ const URI = config.get('DB_CONFIG.TEST_URI');
 const CONNECT_CONF = config.get('DB_CONFIG.CONNECT_CONFIG');
 
 async function fillDb() {
-   for (const dummy in taskDummy) {
-      await new TaskModel(taskDummy[dummy]).save();
+   for (const dummy in taskDummies) {
+      await new TaskModel(taskDummies[dummy]).save();
    }
 }
 
@@ -22,13 +22,16 @@ describe('Testing API tasks', function () {
       await fillDb();
    });
 
-   describe('GET /tasks', function () {
+   describe('GET /user/tasks', function () {
       it('Should return all tasks', function () {
          request(app)
-            .get('/tasks')
+            .get('/user/tasks')
             .expect('Content-type', /json/)
-            .expect(taskDummy)
-            .expect(200);
+            .expect((err, res) => {
+               if (err) throw err;
+               expect(res).to.have.status(200);
+               expect(res.body).to.equal(taskDummies);
+            });
       });
 
       before(function () {
@@ -37,10 +40,15 @@ describe('Testing API tasks', function () {
 
       it('Should return a message when there is not tasks', function () {
          request(app)
-            .get('/tasks')
+            .get('/user/tasks')
             .expect('Content-type', /json/)
-            .expect({ errorMessage: 'There are not tasks yet...' })
-            .expect(200);
+            .end((err, res) => {
+               if (err) throw err;
+               expect(res).to.have.status(200);
+               expect(res.body.errorMessage).to.equal(
+                  'There are not tasks yet...'
+               );
+            });
       });
 
       after(async function () {
@@ -48,9 +56,41 @@ describe('Testing API tasks', function () {
       });
    });
 
-   describe('POST /tasks', function () {
+   describe('POST /user/tasks', function () {
       it('Adding a task should works correctly', function () {
          request(app)
+            .post('/user/tasks')
+            .send(taskDummies[0])
+            .end((err, res) => {
+               if (err) throw err;
+               expect(res).to.have.status(200);
+               expect(res.text).to.equal('Task saved!');
+            });
+      });
+
+      it('Sending incorrect data should responds with an error', function () {
+         request(app)
+            .post('/user/tasks')
+            .send({
+               title: 'Hi',
+               description: '',
+               userId: 'ii',
+               corrupt: 'lmao',
+            })
+            .end((err, res) => {
+               if (err) throw err;
+               expect(res).to.have.status(500);
+            });
+      });
+
+      it('Should responds with an error if the task does not have a title', function () {
+         request(app)
+            .post('/user/tasks')
+            .send({ title: '', description: '', userId: 'ii', corrupt: 'lmao' })
+            .end((err, res) => {
+               if (err) throw err;
+               expect(res).to.have.status(500);
+            });
       });
    });
 

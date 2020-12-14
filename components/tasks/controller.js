@@ -2,13 +2,13 @@ import taskModel from './model';
 
 export default {
    async createTask(req, res) {
-      const saved = await taskModel.createTask({
-         title: req.body.title,
-         description: req.body.description || '',
-         userId: req.body.userId,
+      const { title, description, userId } = req.body;
+      await taskModel.createTask({
+         title,
+         description,
+         userId,
       });
-      if (saved) res.send('Task saved!');
-      else res.send('Error saving the task');
+      res.send('Task saved!');
    },
    async getTask(req, res) {
       const task = await taskModel.getTask(req.params.id);
@@ -21,17 +21,15 @@ export default {
       else res.json({ errorMessage: 'There are not tasks yet...' });
    },
    async removeTask(req, res) {
-      const ok = await taskModel.deleteTask(req.params.id);
-      if (ok) res.send('Task deleted!');
-      else res.json({ errorMessage: "This task doesn't exist..." });
+      await taskModel.deleteTask(req.params.id);
+      res.send('Task deleted!');
    },
    async updateTask(req, res) {
       const { title, description } = req.body;
-      const ok = await taskModel.updateTask(req.params.id, {
+      await taskModel.updateTask(req.params.id, {
          title,
          description,
       });
-      if (ok) res.send('Task updated!');
-      else res.json({ errorMessage: "This task doesn't exist..." });
+      res.send('Task updated!');
    },
 };
