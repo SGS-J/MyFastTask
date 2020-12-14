@@ -1,10 +1,6 @@
 {
-   DB_CONFIG: {
-      DB_NAME: 'test',
-      TEST_URI: 'mongodb://localhost:27017/test',
-      CONNECT_CONFIG: {
-         useUnifiedTopology: true,
-         useNewUrlParser: true,
-      },
-   },
+   SERVER_CONFIG: {
+      DOMAIN: 'localhost:/4000',
+      PORT: '4000',
+   }   
 }

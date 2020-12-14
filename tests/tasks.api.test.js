@@ -1,59 +1,37 @@
 const chaiHttp = require('chai-http');
 const { request } = require('chai').use(chaiHttp);
-const expect = require('chai').expect;
-const config = require('config');
+const { expect } = require('chai');
 const app = require('../app').default;
 
-const { taskDummies } = require('./dummy');
-const TaskModel = require('../components/tasks/schema').default;
-
-const db = require('mongoose');
-const URI = config.get('DB_CONFIG.TEST_URI');
-const CONNECT_CONF = config.get('DB_CONFIG.CONNECT_CONFIG');
-
-async function fillDb() {
-   for (const dummy in taskDummies) {
-      await new TaskModel(taskDummies[dummy]).save();
-   }
-}
+const { taskDummies } = require('./fakes/dummy');
 
 describe('Testing API tasks', function () {
-   before(async function () {
-      await db.connect(URI, CONNECT_CONF);
-      await fillDb();
-   });
-
    describe('GET /user/tasks', function () {
-      it('Should return all tasks', function () {
+      it('Should return all tasks', function (done) {
          request(app)
             .get('/user/tasks')
-            .expect('Content-type', /json/)
-            .expect((err, res) => {
-               if (err) throw err;
+            .send(taskDummies[0])
+            .end((err, res) => {
+               if (err) done(err);
                expect(res).to.have.status(200);
-               expect(res.body).to.equal(taskDummies);
+               expect(res).to.have.header('Content-type', /json/)
+               expect(res.body).to.be.equal(taskDummies[0]);
+               done()
             });
       });
 
-      before(function () {
-         TaskModel.deleteMany();
-      });
-
-      it('Should return a message when there is not tasks', function () {
+      it('Should return a message when there is not tasks', function (done) {
          request(app)
             .get('/user/tasks')
-            .expect('Content-type', /json/)
             .end((err, res) => {
-               if (err) throw err;
+               if (err) done(err);
                expect(res).to.have.status(200);
+               expect(res).to.have.header('Content-type', /json/)
                expect(res.body.errorMessage).to.equal(
                   'There are not tasks yet...'
                );
+               done()
             });
-      });
-
-      after(async function () {
-         await fillDb();
       });
    });
 
@@ -87,16 +65,11 @@ describe('Testing API tasks', function () {
       it('Should responds with an error if the task does not have a title', function () {
          request(app)
             .post('/user/tasks')
-            .send({ title: '', description: '', userId: 'ii', corrupt: 'lmao' })
+            .send({ title: '', description: '', userId: 'ii'})
             .end((err, res) => {
                if (err) throw err;
                expect(res).to.have.status(500);
             });
       });
-   });
-
-   after(async function () {
-      await db.connection.dropDatabase();
-      await db.connection.close();
    });
 });
