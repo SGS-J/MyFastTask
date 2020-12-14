@@ -3,4 +3,4 @@ Server made in NodeJs using mongoDb as database.
 You can test it on Postman or others Api testers like it on localhost:3000/(url that you want to test).
 
 ## Some utilities 
-You can run the tests using npm test.
+You can run the unit tests using npm test.
