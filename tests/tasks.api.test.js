@@ -1,4 +1,5 @@
-const request = require('supertest');
+const chaiHttp = require('chai-http');
+const { request } = require('chai').use(chaiHttp);
 const expect = require('chai').expect;
 const config = require('config');
 const app = require('../app').default;
