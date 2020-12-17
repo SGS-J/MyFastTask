@@ -2,7 +2,7 @@ import express from 'express';
 import logger from 'morgan';
 import indexRouter from './routes/index';
 import config from "config";
-import './services/authentication/auth';
+import './middleware/authentication/auth';
 
 const app = express();
 app.use(

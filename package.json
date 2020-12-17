@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "SET NODE_ENV=default&& nodemon --exec node -r esm ./bin/www",
     "start": "SET NODE_ENV=production&& node -r esm ./bin/www",
-    "test": "SET NODE_ENV=test&& mocha -r esm --timeout 10000 --exit"
+    "test": "SET NODE_ENV=test&& mocha -r esm ./tests/** --timeout 5000 --exit"
   },
   "author": "Santiago",
   "license": "ISC",
@@ -13,6 +13,8 @@
     "bcrypt": "^5.0.0",
     "config": "^3.3.3",
     "express": "^4.17.1",
+    "express-validator": "^6.8.0",
+    "moment": "^2.29.1",
     "mongoose": "^5.11.7",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
@@ -20,6 +22,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "esm": "^3.2.25",
     "faker": "^5.1.0",
     "mocha": "^8.2.1"

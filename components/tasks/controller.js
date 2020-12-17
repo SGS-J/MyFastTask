@@ -3,12 +3,16 @@ import taskModel from './model';
 export default {
    async createTask(req, res) {
       const { title, description, userId } = req.body;
-      await taskModel.createTask({
-         title,
-         description,
-         userId,
-      });
-      res.send('Task saved!');
+      if(!title) {
+         res.send('The task needs a title at least');
+      } else {
+         await taskModel.createTask({
+            title,
+            description,
+            userId,
+         });
+         res.send('Task saved!');
+      }
    },
    async getTask(req, res) {
       const task = await taskModel.getTask(req.params.id);
@@ -17,7 +21,7 @@ export default {
    },
    async getAllTasks(req, res) {
       const tasks = await taskModel.getAllTasks();
-      if (tasks) res.json(tasks);
+      if (tasks.length > 0) res.json(tasks);
       else res.json({ errorMessage: 'There are not tasks yet...' });
    },
    async removeTask(req, res) {
