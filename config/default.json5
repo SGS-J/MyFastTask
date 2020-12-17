@@ -2,7 +2,7 @@
    DB_CONFIG: {
       DOMAIN: 'localhost:27017',
       PORT: 27017,
-      DB_NAME: 'Tasks',
+      DB_NAME: 'TasksApp',
    },
    SERVER_CONFIG: {
       DOMAIN: 'localhost:3000',

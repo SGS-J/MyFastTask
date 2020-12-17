@@ -1,4 +1,4 @@
-import TaskCollection from './schema';
+import TaskCollection from '../../services/mongoDb/schemas/Task.schema';
 
 export default {
    async createTask(task) {
