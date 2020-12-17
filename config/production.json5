@@ -1,11 +1,10 @@
 {
    DB_CONFIG: {
-      DOMAIN: 'localhost:27017',
-      PORT: 27017,
       DB_NAME: 'MyTasksAppDB',
    },
    SERVER_CONFIG: {
       DOMAIN: 'mysupertast.com',
       PORT: 8080,
    },
+   LOGGER: 'combined',
 }

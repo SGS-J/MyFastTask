@@ -4,6 +4,9 @@
 # nodejs
 node_modules
 
+# env_variables
+config
+
 # npm
 package-lock.json
 

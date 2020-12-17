@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "SET NODE_ENV=development&& nodemon --exec node -r esm ./bin/www",
+    "dev": "SET NODE_ENV=default&& nodemon --exec node -r esm ./bin/www",
     "start": "SET NODE_ENV=production&& node -r esm ./bin/www",
     "test": "SET NODE_ENV=test&& mocha -r esm --timeout 10000 --exit"
   },

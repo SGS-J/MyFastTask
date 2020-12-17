@@ -1,7 +1,3 @@
 {
-   DB_CONFIG: {
-      DOMAIN: 'localhost:27017',
-      PORT: '27017',
-      DB_NAME: 'test',
-   },
+   LOGGER: '',
 }

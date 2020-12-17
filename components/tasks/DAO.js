@@ -8,7 +8,7 @@ export default {
       return await TaskCollection.findById(id).catch(() => false);
    },
    async getAllTasks() {
-      return await TaskCollection.find().catch(() => false);
+      return await TaskCollection.find().sort({creationDate: -1}).catch(() => false);
    },
    async deleteTask(id) {
       return await TaskCollection.findByIdAndDelete(id).catch(() => false);

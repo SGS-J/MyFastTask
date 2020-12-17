@@ -7,7 +7,7 @@ const config = require("config");
 const PORT = config.get('SERVER_CONFIG.PORT');
 const env = config.util.getEnv('NODE_ENV');
 
-db.connectToDB();
+db.connectToDB()
 
 app.set('port', PORT);
 

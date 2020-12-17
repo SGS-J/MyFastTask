@@ -5,6 +5,6 @@ import taskRouter from '../components/tasks/routes';
 const router = Router();
 
 router.use('/user', userRouter);
-router.use('/user/tasks', taskRouter);
+router.use('/tasks', taskRouter);
 
 export default router;
