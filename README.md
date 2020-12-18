@@ -6,8 +6,7 @@ You can test it on Postman or others Api testers like it on localhost:3000/(url 
 <h3>Warning!</h3>
 
 The tests are for API, so it uses the database and other dependencies used in the
-project(like integration tests), ensure that you install the require dependencies and
-have the database to use it, otherwise, the tests will fail.
+project (like integration tests), ensure that you install the require dependencies and have the database to use it, otherwise, the tests will fail.
 
 You can run the tests using:
 ```bash
