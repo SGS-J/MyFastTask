@@ -13,27 +13,25 @@ export default {
             birthday: { date: req.body.birthday },
             UIColor: req.body.UIColor || 'Red',
          });
-         res.send('User created satisfactorily!');
+         res.send('User created successfully!')
       },
    ],
-   authUser: [
-      passport.authenticate('local', { failureRedirect: '/user/login' }),
+   loginUser: [
+      passport.authenticate('login', { failureRedirect: '/user/login' }),
       (req, res) => {
-         res.redirect(`/user/${req.params.id}/me`);
+         res.redirect(`/user/${req.body.username}/me`);
       },
    ],
-   getUser: [
-      (req, res, next) =>
-         req.isAuthenticated() ? next() : res.redirect('/user/login'),
-      async (req, res) => {
-         const user = await userModel.getUserById(req.params.id);
-         res.json({
-            name: user.name,
-            avatar: user.avatar,
-            UIColor: user.UIColor,
-         });
-      },
-   ],
-   loginUser(req, res) {},
+   async getUser(req, res) {
+      const user = await userModel.getUser(req.params.username);
+      res.json({
+         name: user.name,
+         avatar: user.avatar,
+         UIColor: user.UIColor,
+      });
+   },
+   verifyAuthentication(req, res, next) {
+      req.isAuthenticated() ? next() : res.redirect('/user/login');
+   },
    updateUser(req, res) {},
 };
