@@ -4,10 +4,10 @@ import validation from "../../middleware/validator/user-validator";
 
 const router = Router();
 
-router.get('/:id', controller.getUser)
-router.get('/login/:id', controller.authUser)
-router.post('/register', ...validation, controller.addUser)
-router.patch('/', controller.updateUser)
-router.delete('/', controller.removeUser)
+router.post('/register', ...controller.addUser)
+router.get('/:username/me', ...controller.getUser)
+router.get('/auth', ...controller.authUser)
+router.get('/login', controller.loginUser)
+router.patch('/:username/me', controller.updateUser)
 
 export default router;
