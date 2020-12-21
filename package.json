@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "SET NODE_ENV=default&& nodemon --exec node -r esm ./bin/www",
+    "dev": "SET NODE_ENV=development&& nodemon --exec node -r esm ./bin/www",
     "start": "SET NODE_ENV=production&& node -r esm ./bin/www",
-    "test": "SET NODE_ENV=test&& mocha -r esm ./tests/** --timeout 5000 --exit"
+    "debug": "SET NODE_ENV=debug&& nodemon --exec node -r esm ./bin/www"
   },
   "author": "Santiago",
   "license": "ISC",
@@ -22,10 +22,6 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "esm": "^3.2.25",
-    "faker": "^5.1.0",
-    "mocha": "^8.2.1"
+    "esm": "^3.2.25"
   }
 }

@@ -19,11 +19,17 @@ export default {
    loginUser: [
       passport.authenticate('login', { failureRedirect: '/user/login' }),
       (req, res) => {
+         req.app.locals.userLogged = req.body.username;
          res.redirect(`/user/${req.body.username}/me`);
       },
    ],
+   logoutUser(req, res) {
+      req.app.locals.userLogged = '';
+      req.logout()
+      res.redirect('/user/login')
+   },
    async getUser(req, res) {
-      const user = await userModel.getUser(req.params.username);
+      const user = await userModel.getUserByName(req.params.username);
       res.json({
          name: user.name,
          avatar: user.avatar,

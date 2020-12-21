@@ -6,10 +6,9 @@ import { matchPassword } from '../../services/utils/encrypt';
 passport.use(
    'login',
    new LocalStrategy(
-      { usernameField: true, passwordField: true },
       async (username, password, done) => {
          try {
-            const user = await userModel.getUser(username);
+            const user = await userModel.getUserByName(username);
             if (!user) return done(null, false);
             if (!matchPassword(password, user.password))
                return done(null, false);

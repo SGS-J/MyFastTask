@@ -15,5 +15,6 @@ router.patch(
 );
 router.post('/register', ...controller.addUser);
 router.post('/login', ...controller.loginUser);
+router.post('/logout', controller.verifyAuthentication, controller.logoutUser);
 
 export default router;

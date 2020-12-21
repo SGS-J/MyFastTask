@@ -1,4 +1,5 @@
 import passport from "passport";
+import userModel from "../../components/users/model";
 
 passport.serializeUser(function (user, done) {
    done(null, user._id);

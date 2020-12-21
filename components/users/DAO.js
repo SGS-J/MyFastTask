@@ -7,8 +7,8 @@ export default {
    async getUserById(id) {
       return await UserCollection.findById(id).catch(() => false);
    },
-   async getUser(username) {
-      return await UserCollection.findOne({ username }).catch(() => false);
+   async getUserByName(username) {
+      return await UserCollection.findOne({ name: username }).catch(() => false);
    },
    async removeUser(id) {
       await UserCollection.findByIdAndDelete(id).catch(() => false);

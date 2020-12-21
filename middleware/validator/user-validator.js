@@ -5,7 +5,7 @@ export default [
    [
       body('username').isLength({ min: 3, max: 12 }),
       body('username').custom(async value => {
-         const user = await userModel.getUser(value);
+         const user = await userModel.getUserByName(value);
          if (user) throw new Error('User already in use');
          return true;
       }),

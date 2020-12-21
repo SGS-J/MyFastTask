@@ -7,8 +7,8 @@ export default {
    getUserById(id) {
       return userDao.getUserById(id);
    },
-   getUser(username) {
-      return userDao.getUser(username);
+   getUserByName(username) {
+      return userDao.getUserByName(username);
    },
    removeUser(id) {
       return userDao.removeUser(id);
