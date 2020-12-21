@@ -11,6 +11,7 @@ export async function connectToDB() {
          .connect(URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
+            useFindAndModify: false,
          })
       console.log(`> mongodb is connected on ${db.connection.host}`);
    } catch (error) {

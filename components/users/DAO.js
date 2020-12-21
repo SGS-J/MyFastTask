@@ -8,13 +8,15 @@ export default {
       return await UserCollection.findById(id).catch(() => false);
    },
    async getUserByName(username) {
-      return await UserCollection.findOne({ name: username }).catch(() => false);
+      return await UserCollection.findOne({ name: username }).catch(
+         () => false
+      );
    },
-   async removeUser(id) {
-      await UserCollection.findByIdAndDelete(id).catch(() => false);
-   },
-   async updateUser(id, user) {
-      await UserCollection.findByIdAndUpdate(id, user).catch(() => false);
+   async updateUser(username, user) {
+      console.log(username, user);
+      return await UserCollection.findOneAndUpdate({ name: username }, user).catch(
+         () => false
+      );
    },
    async getUserTasksMade(id) {
       const user = await this.getUserById(id).catch(() => false);

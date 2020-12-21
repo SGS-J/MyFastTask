@@ -13,7 +13,7 @@ export default {
             birthday: { date: req.body.birthday },
             UIColor: req.body.UIColor || 'Red',
          });
-         res.send('User created successfully!')
+         res.send('User created successfully!');
       },
    ],
    loginUser: [
@@ -23,21 +23,43 @@ export default {
          res.redirect(`/user/${req.body.username}/me`);
       },
    ],
+   getLoginPage(req, res) {
+      if(req.isAuthenticated()) res.redirect(`/user/${req.app.locals.userLogged}/me`)
+      else res.end()
+   },
    logoutUser(req, res) {
       req.app.locals.userLogged = '';
-      req.logout()
-      res.redirect('/user/login')
+      req.logout();
+      res.redirect('/user/login');
    },
    async getUser(req, res) {
-      const user = await userModel.getUserByName(req.params.username);
-      res.json({
-         name: user.name,
-         avatar: user.avatar,
-         UIColor: user.UIColor,
+      if(req.params.username === req.app.locals.userLogged){
+         const user = await userModel.getUserByName(req.params.username);
+         res.json({
+            name: user.name,
+            avatar: user.avatar,
+            UIColor: user.UIColor,
+         });
+      } else {
+         res.redirect(`/user/${req.app.locals.userLogged}/me`);
+      }
+   },
+   async updateUser(req, res) {
+      const { name, gender, birthday, UIColor, avatar } = req.body;
+      const ok = await userModel.updateUser(req.app.locals.userLogged, {
+         name,
+         gender,
+         birthday,
+         UIColor,
+         avatar,
       });
+      if (ok) {
+         if(name) req.app.locals.userLogged = name;
+         res.send('User updated!');
+      }
+      else res.status(400).end();
    },
    verifyAuthentication(req, res, next) {
       req.isAuthenticated() ? next() : res.redirect('/user/login');
    },
-   updateUser(req, res) {},
 };

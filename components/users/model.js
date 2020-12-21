@@ -1,4 +1,5 @@
 import userDao from './DAO';
+import userDto from "./DTO";
 
 export default {
    addUser(user) {
@@ -10,10 +11,9 @@ export default {
    getUserByName(username) {
       return userDao.getUserByName(username);
    },
-   removeUser(id) {
-      return userDao.removeUser(id);
-   },
-   updateUser(id, user) {
-      return userDao.updateUser(id, user);
+   async updateUser(username, dataToUpdate) {
+      const userUpdated = await userDto.validateUpdate(dataToUpdate); 
+      if(!userUpdated) return false;
+      return userDao.updateUser(username, userUpdated);
    },
 };

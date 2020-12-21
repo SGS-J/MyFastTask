@@ -9,12 +9,13 @@ router.get(
    controller.getUser
 );
 router.patch(
-   '/:username/me',
+   '/:username/update',
    controller.verifyAuthentication,
    controller.updateUser
 );
 router.post('/register', ...controller.addUser);
 router.post('/login', ...controller.loginUser);
+router.get('/login', controller.getLoginPage);
 router.post('/logout', controller.verifyAuthentication, controller.logoutUser);
 
 export default router;
