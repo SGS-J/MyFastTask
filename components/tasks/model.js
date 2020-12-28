@@ -4,11 +4,11 @@ export default {
    createTask(task) {
       return taskDao.createTask(task);
    },
-   getTask(id) {
-      return taskDao.getTask(id);
+   getAllTasks(username) {
+      return taskDao.getAllTasks(username);
    },
-   getAllTasks() {
-      return taskDao.getAllTasks();
+   getTasksMade(username) {
+      return taskDao.getTasksMade(username);
    },
    deleteTask(id) {
       return taskDao.deleteTask(id);

@@ -13,7 +13,7 @@ export default {
             birthday: { date: req.body.birthday },
             UIColor: req.body.UIColor || 'Red',
          });
-         res.send('User created successfully!');
+         res.redirect('/user/login');
       },
    ],
    loginUser: [
@@ -23,10 +23,6 @@ export default {
          res.redirect(`/user/${req.body.username}/me`);
       },
    ],
-   getLoginPage(req, res) {
-      if(req.isAuthenticated()) res.redirect(`/user/${req.app.locals.userLogged}/me`)
-      else res.end()
-   },
    logoutUser(req, res) {
       req.app.locals.userLogged = '';
       req.logout();
@@ -55,9 +51,13 @@ export default {
       });
       if (ok) {
          if(name) req.app.locals.userLogged = name;
-         res.send('User updated!');
+         res.json({message: "You've updated your data!"});
       }
       else res.status(400).end();
+   },
+   confirmUnauthentication(req, res) {
+      if(req.isAuthenticated()) res.redirect(`/user/${req.app.locals.userLogged}/me`)
+      else res.end()
    },
    verifyAuthentication(req, res, next) {
       req.isAuthenticated() ? next() : res.redirect('/user/login');

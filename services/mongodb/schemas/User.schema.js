@@ -1,6 +1,6 @@
-import mongoose, { Schema } from "mongoose";
-import { encryptPassword } from "../../utils/encrypt";
-import moment from "moment";
+import mongoose, { Schema } from 'mongoose';
+import { encryptPassword } from '../../utils/encrypt';
+import moment from 'moment';
 
 const userSchema = new Schema({
    name: { type: String, required: true },
@@ -14,9 +14,8 @@ const userSchema = new Schema({
       },
       required: true,
    },
-   tasksMade: {type: Number, default: 0},
-   UIColor: {type: String, required: true, default: 'Red'},
-   avatar: {type: String, default: 'unknown.png'}, 
+   UIColor: { type: String, required: true, default: 'Red' },
+   avatar: { type: String, default: 'unknown.png' },
 });
 
 userSchema.pre('save', async function (next) {
@@ -28,9 +27,5 @@ userSchema.pre('save', async function (next) {
    this.birthday.minor = diff < 18;
    next();
 });
-
-userSchema.methods.getTaskMade = function () {
-   return this.tasksMade; 
-}
 
 export default mongoose.model('User', userSchema);

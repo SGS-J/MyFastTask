@@ -3,19 +3,15 @@ import controller from './controller';
 
 const router = Router();
 
-router.get(
-   '/:username/me',
-   controller.verifyAuthentication,
-   controller.getUser
+router.all(
+   /^\/\w{3,}\/(tasks\/*|update|logout)$/gi,
+   controller.verifyAuthentication
 );
-router.patch(
-   '/:username/update',
-   controller.verifyAuthentication,
-   controller.updateUser
-);
+router.get('/:username/me', controller.getUser);
+router.get(/^\/(login|register)$/, controller.confirmUnauthentication);
+router.patch('/:username/update', controller.updateUser);
 router.post('/register', ...controller.addUser);
 router.post('/login', ...controller.loginUser);
-router.get('/login', controller.getLoginPage);
-router.post('/logout', controller.verifyAuthentication, controller.logoutUser);
+router.post('/logout', controller.logoutUser);
 
 export default router;

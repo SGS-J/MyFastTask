@@ -5,7 +5,7 @@ const taskSchema = new Schema({
    description: String,
    creationDate: {type: Date, default: Date.now},
    finished: { type: Boolean, default: false },
-   userId: { type: String, required: true },
+   belongTo: { type: String, required: true },
 });
 
 export default mongoose.model('Tasks', taskSchema);

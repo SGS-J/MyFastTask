@@ -14,12 +14,12 @@ export default {
    },
    async updateUser(username, user) {
       console.log(username, user);
-      return await UserCollection.findOneAndUpdate({ name: username }, user).catch(
-         () => false
-      );
+      return await UserCollection.findOneAndUpdate(
+         { name: username },
+         user
+      ).catch(() => false);
    },
-   async getUserTasksMade(id) {
-      const user = await this.getUserById(id).catch(() => false);
-      return user.getTasksMade();
+   async getUserTasksMade(username) {
+      return await this.getUserByName(username).catch(() => false).tasksMade;
    },
 };
