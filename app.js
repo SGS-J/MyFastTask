@@ -5,6 +5,7 @@ import passport from 'passport';
 import expressSession from 'express-session';
 import indexRouter from './routes/index';
 import './middleware/locals';
+import './middleware/error-handler';
 import './middleware/authentication/index';
 
 const app = express();
