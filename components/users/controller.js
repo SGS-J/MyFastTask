@@ -1,11 +1,15 @@
 import userModel from './model';
 import validation from '../../middleware/validator/user-validator';
+import uploadImage from '../../middleware/multer/file-data';
+import uploadField from '../../middleware/multer/field-user-data';
 import passport from 'passport';
 
 export default {
    addUser: [
+      uploadField,
       ...validation,
       async (req, res) => {
+         await updateImage(req, res);
          await userModel.addUser({
             name: req.body.username,
             password: req.body.password,
@@ -29,7 +33,7 @@ export default {
       res.redirect('/user/login');
    },
    async getUser(req, res) {
-      if(req.params.username === req.app.locals.userLogged){
+      if (req.params.username === req.app.locals.userLogged) {
          const user = await userModel.getUserByName(req.params.username);
          res.json({
             name: user.name,
@@ -50,14 +54,14 @@ export default {
          avatar,
       });
       if (ok) {
-         if(name) req.app.locals.userLogged = name;
-         res.json({message: "You've updated your data!"});
-      }
-      else res.status(400).end();
+         if (name) req.app.locals.userLogged = name;
+         res.json({ message: "You've updated your data!" });
+      } else res.status(400).end();
    },
    confirmUnauthentication(req, res) {
-      if(req.isAuthenticated()) res.redirect(`/user/${req.app.locals.userLogged}/me`)
-      else res.end()
+      if (req.isAuthenticated())
+         res.redirect(`/user/${req.app.locals.userLogged}/me`);
+      else res.end();
    },
    verifyAuthentication(req, res, next) {
       req.isAuthenticated() ? next() : res.redirect('/user/login');
