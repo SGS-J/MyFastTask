@@ -10,7 +10,7 @@ export default function Navbar() {
       <>
          <nav className="amber">
             <div className="container nav-wrapper">
-               <Link href="/">
+               <Link href="/home">
                   <a className="brand-logo">
                      <i className="material-icons">event_note</i>
                      Todos one
@@ -22,13 +22,15 @@ export default function Navbar() {
 
                <ul className="right hide-on-med-and-down">
                   <li>
-                     <a>Sass</a>
+                     <a>Sign Up</a>
                   </li>
+                  <Link href="/login">
+                     <li>
+                        <a>Log In</a>
+                     </li>
+                  </Link>
                   <li>
-                     <a>Components</a>
-                  </li>
-                  <li>
-                     <a>JavaScript</a>
+                     <a>About</a>
                   </li>
                </ul>
             </div>
