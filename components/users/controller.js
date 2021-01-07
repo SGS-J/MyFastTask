@@ -1,22 +1,24 @@
 import userModel from './model';
-import validation from '../../middleware/validator/user-validator';
-import uploadImage from '../../middleware/multer/file-data';
-import uploadField from '../../middleware/multer/field-user-data';
+import validator from '../../middleware/validator/user-validator';
+import formHandler from '../../middleware/multer/index';
 import passport from 'passport';
 
 export default {
    addUser: [
-      uploadField,
-      ...validation,
+      formHandler.uploadFields(),
+      validator.validate(),
       async (req, res) => {
-         await updateImage(req, res);
          await userModel.addUser({
             name: req.body.username,
             password: req.body.password,
             gender: req.body.gender || 'Unknown',
             birthday: { date: req.body.birthday },
             UIColor: req.body.UIColor || 'Red',
+            avatar: req.files[0] || {
+               originalName: 'unknown.png',
+            },
          });
+         await formHandler.uploadImage(req, res);
          res.redirect('/user/login');
       },
    ],
@@ -35,9 +37,12 @@ export default {
    async getUser(req, res) {
       if (req.params.username === req.app.locals.userLogged) {
          const user = await userModel.getUserByName(req.params.username);
-         res.json({
+         await res.json({
             name: user.name,
-            avatar: user.avatar,
+            avatar: {
+               imgName: user.avatar.originalname,
+               buffer: user.avatar.buffer,
+            },
             UIColor: user.UIColor,
          });
       } else {

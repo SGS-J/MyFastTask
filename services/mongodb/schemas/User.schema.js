@@ -15,7 +15,11 @@ const userSchema = new Schema({
       required: true,
    },
    UIColor: { type: String, required: true, default: 'Red' },
-   avatar: { type: String, default: 'unknown.png' },
+   avatar: {
+      type: {
+         originalname: String, 
+      }
+   },
 });
 
 userSchema.pre('save', async function (next) {

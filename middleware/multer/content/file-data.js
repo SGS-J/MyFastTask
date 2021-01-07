@@ -25,6 +25,6 @@ const storage = new GridFsStorage({
    },
 });
 
-const uploadFile = multer({ storage: storage }).single('file');
+const uploadFile = multer({ storage: storage }).single('avatar');
 
 export default promisify(uploadFile);
