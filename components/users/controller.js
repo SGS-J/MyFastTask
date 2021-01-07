@@ -14,11 +14,8 @@ export default {
             gender: req.body.gender || 'Unknown',
             birthday: { date: req.body.birthday },
             UIColor: req.body.UIColor || 'Red',
-            avatar: req.files[0] || {
-               originalName: 'unknown.png',
-            },
+            avatar: req.files[0],
          });
-         await formHandler.uploadImage(req, res);
          res.redirect('/user/login');
       },
    ],
