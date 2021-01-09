@@ -1,8 +1,14 @@
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import 'materialize-css/dist/css/materialize.min.css';
+import { useEffect } from 'react';
 
 function App({ Component, pageProps }) {
+   useEffect(() => {
+      const M = require('materialize-css')
+      M.AutoInit();
+   }, []);
+
    return (
       <>
          <Head>
