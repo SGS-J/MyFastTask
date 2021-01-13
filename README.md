@@ -1,14 +1,7 @@
-# MyFastTask
-A todos application to organize your time and improve your productivity.
+# Front-end branch
+Front-end made using server-side rendering with Nextjs and Reactjs using React hooks.
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Warning
+Note that this branch cannot connect to server, so that means the front-end 
+branch only can be used for UI and client interaction by itself. If you want to
+test the server, merging the back with the front, you should go to the main branch in that case.
