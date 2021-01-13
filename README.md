@@ -1,5 +1,5 @@
 # MyFastTask
-An todos application to organize your time and improve your productivity.
+A todos application to organize your time and improve your productivity.
 
 ## Getting Started
 
