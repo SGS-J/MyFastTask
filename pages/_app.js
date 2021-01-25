@@ -1,12 +1,15 @@
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import 'materialize-css/dist/css/materialize.min.css';
+import "huebee/dist/huebee.min.css";
+import "../public/custom.css";
 import { useEffect } from 'react';
 
 function App({ Component, pageProps }) {
    useEffect(() => {
       const M = require('materialize-css')
       M.AutoInit();
+      require('huebee')
    }, []);
 
    return (
