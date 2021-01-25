@@ -51,7 +51,7 @@ export default function Navbar() {
                </li>
             </Link>
             <li>
-               <a class="sidenav-close" href="#!">Close</a>
+               <a className="sidenav-close" href="#!">Close</a>
             </li>
          </ul>
       </>
