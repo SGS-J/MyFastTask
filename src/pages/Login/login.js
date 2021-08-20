@@ -1,3 +1,3 @@
-export default function Loginpage() {
-   return <h3>/login</h3>
+export default function RegisterPage() {
+   return <h3>/register</h3>
 }

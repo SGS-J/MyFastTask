@@ -29,7 +29,7 @@ export default function Navigation() {
                      </li>
                      <li className="nav-item">
                         <a className="nav-link" href="/register">
-                           Sign In
+                           Sign Up
                         </a>
                      </li>
                   </ul>
