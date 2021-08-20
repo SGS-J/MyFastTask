@@ -1,12 +1,12 @@
-import HomePage from './pages/home';
-import LoginPage from './pages/login';
-import RegisterPage from './pages/register';
-import Navigation from './components/Navigation';
+import HomePage from './pages/Home/home';
+import LoginPage from './pages/Login/login';
+import RegisterPage from './pages/Register/register';
+import Navigation from './layout/Navigation';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
    return (
-      <div className="App">
+      <>
          <Navigation />
          <Router>
             <Switch>
@@ -21,7 +21,7 @@ function App() {
                </Route>
             </Switch>
          </Router>
-      </div>
+      </>
    );
 }
 
