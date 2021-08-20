@@ -1,14 +1,3 @@
-# MyFastTask
-An todos application to organize your time and improve your productivity.
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Server branch
+Server made in NodeJs using mongoDb as database.
+You can test it on Postman or others Api testers like it on localhost:3000/(url that you want to test).
