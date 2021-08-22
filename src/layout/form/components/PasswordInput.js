@@ -1,12 +1,19 @@
 import React from "react";
 
-export default function PasswordInput() {
+export default function PasswordInput({ inputValue, handleChange }) {
   return (
     <div className="mb-3">
       <label htmlFor="inputPassword" className="form-label">
         Password
       </label>
-      <input type="password" className="form-control" id="inputPassword" />
+      <input
+        name="password"
+        type="password"
+        className="form-control"
+        id="inputPassword"
+        onChange={handleChange}
+        value={inputValue}
+      />
     </div>
   );
 }

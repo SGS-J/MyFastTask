@@ -26,7 +26,7 @@ export default function ImageInput() {
   };
 
   return (
-    <div class="mb-3">
+    <div className="mb-3">
       <Avatar
         label="Choose your avatar"
         width={300}

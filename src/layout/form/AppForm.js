@@ -6,14 +6,16 @@ import ColorInput from "./components/ColorInput";
 import ImageInput from "./components/ImageInput";
 
 const AppForm = {
-  EmailInput: function () {
-    return <EmailInput />;
+  EmailInput: function ({ inputValue, handleChange }) {
+    return <EmailInput inputValue={inputValue} handleChange={handleChange} />;
   },
-  PasswordInput: function () {
-    return <PasswordInput />;
+  PasswordInput: function ({ inputValue, handleChange }) {
+    return (
+      <PasswordInput inputValue={inputValue} handleChange={handleChange} />
+    );
   },
-  GenderInput: function () {
-    return <GenderInput />;
+  GenderInput: function ({ inputValue, handleChange }) {
+    return <GenderInput inputValue={inputValue} handleChange={handleChange} />;
   },
   BirthdayInput: function () {
     return <BirthdayInput />;
