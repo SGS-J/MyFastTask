@@ -15,7 +15,7 @@ export default function GenderInput({ inputValue, handleChange }) {
             id="inlineRadio1"
             value="male"
             checked={inputValue === "male"}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
           />
           <label className="form-check-label" htmlFor="inlineRadio1">
             Male

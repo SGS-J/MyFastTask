@@ -24,7 +24,7 @@ const reducer = (state, action) => {
     case "color":
       return;
     case "avatar":
-      return;
+      return { ...state, avatar: action.value };
 
     default:
       throw new Error();
@@ -33,8 +33,8 @@ const reducer = (state, action) => {
 
 export default function SignUpForm() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const handleChange = (e) => {
-    dispatch({ type: e.target.name, value: e.target.value });
+  const handleChange = (type, value) => {
+    dispatch({ type, value });
   };
 
   return (
@@ -55,7 +55,10 @@ export default function SignUpForm() {
         <AppForm.BirthdayInput />
       </div>
       <div className="col-12 col-md-6">
-        <AppForm.ImageInput />
+        <AppForm.ImageInput
+          inputValue={state.avatar}
+          handleChange={handleChange}
+        />
       </div>
 
       <button type="submit" className="btn btn-primary col-6 col-md-2">

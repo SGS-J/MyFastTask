@@ -23,8 +23,8 @@ const AppForm = {
   ColorInput: function () {
     return <ColorInput />;
   },
-  ImageInput: function () {
-    return <ImageInput />;
+  ImageInput: function ({ inputValue, handleChange }) {
+    return <ImageInput inputValue={inputValue} handleChange={handleChange} />;
   },
 };
 

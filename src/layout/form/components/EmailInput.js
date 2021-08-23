@@ -13,7 +13,7 @@ export default function EmailInput({ inputValue, handleChange }) {
         id="inputEmail"
         aria-describedby="emailHelp"
         value={inputValue}
-        onChange={handleChange}
+        onChange={(e) => handleChange(e.target.name, e.target.value)}
       />
       <div id="emailHelp" className="form-text">
         We'll never share your email with anyone else.

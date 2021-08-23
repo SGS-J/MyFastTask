@@ -11,7 +11,7 @@ export default function PasswordInput({ inputValue, handleChange }) {
         type="password"
         className="form-control"
         id="inputPassword"
-        onChange={handleChange}
+        onChange={(e) => handleChange(e.target.name, e.target.value)}
         value={inputValue}
       />
     </div>
