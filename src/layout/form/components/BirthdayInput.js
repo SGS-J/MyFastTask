@@ -4,17 +4,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function BirthdayInput() {
-  const [startDate, setStartDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
   return (
     <div className="mb-3">
       <label htmlFor="date-picker-box" className="form-label">
-        Your birthday was...
+        Your birthday:
       </label>
       <div id="date-picker-box">
-        <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-        />
+        <DatePicker selected={date} onChange={(date) => setDate(date)} />
       </div>
     </div>
   );

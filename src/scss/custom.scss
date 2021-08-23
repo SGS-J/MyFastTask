@@ -1,3 +1,6 @@
+@use "./variable" as var;
+@use "./mixin" as mixin;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -12,22 +15,44 @@ code {
     monospace;
 }
 
-#avatar-preview {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 180px;
-  height: 180px;
-  border: 1px solid #ced4da;
-  border-radius: 50%;
+#avatar-input {
+  @include mixin.avatar_input();
+  position: relative;
+  cursor: pointer;
+
+  .icon-edit-wrapper {
+    position: absolute;
+    display: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+  }
+
+  &:hover > {
+    .icon-edit-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &:hover::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ced4da55;
+    border-radius: inherit;
+  }
 
   img {
-    max-width: 100%;
-    max-height: 100%;
-    min-width: 100%;
-    min-height: 100%;
-    overflow: hidden;
+    border-radius: 50%;
   }
+}
+
+#avatar-preview {
+  @include mixin.avatar_input();
 
   .default-image {
     border-radius: 50%;

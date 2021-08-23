@@ -3,7 +3,7 @@ import PasswordInput from "./components/PasswordInput";
 import GenderInput from "./components/GenderInput";
 import BirthdayInput from "./components/BirthdayInput";
 import ColorInput from "./components/ColorInput";
-import ImageInput from "./components/ImageInput";
+import ImageInput from "./components/ImageInput/ImageInput";
 
 const AppForm = {
   EmailInput: function ({ inputValue, handleChange }) {
