@@ -1,13 +1,14 @@
-import React, { useState, useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import AppForm from "./../../../layout/form/AppForm";
 import DefaultAvatar from "./../../../assets/default.png";
 
 const initialState = {
   email: "",
   password: "",
+  "confirm-password": "",
   gender: "",
   birthday: new Date(),
-  color: "red",
+  color: "#B80000",
   avatar: DefaultAvatar,
 };
 
@@ -17,12 +18,14 @@ const reducer = (state, action) => {
       return { ...state, email: action.value };
     case "password":
       return { ...state, password: action.value };
+    case "confirm-password":
+      return { ...state, "confirm-password": action.value };
     case "gender":
       return { ...state, gender: action.value };
     case "birthday":
-      return;
+      return { ...state, birthday: action.value };
     case "color":
-      return;
+      return { ...state, color: action.value };
     case "avatar":
       return { ...state, avatar: action.value };
 
@@ -37,9 +40,17 @@ export default function SignUpForm() {
     dispatch({ type, value });
   };
 
+  useEffect(() => {
+    AppForm.disableInvalidFormDefault();
+  }, []);
+
   return (
-    <form className="row">
-      <div className="col-12 col-md-6">
+    <form
+      className="needs-validation row container bg-white rounded-1 shadow col-11 col-lg-6 my-5 p-5"
+      noValidate
+    >
+      <h1 className="col-12 mb-3">REGISTER</h1>
+      <div className="col-12 col-lg-6">
         <AppForm.EmailInput
           inputValue={state.email}
           handleChange={handleChange}
@@ -47,23 +58,38 @@ export default function SignUpForm() {
         <AppForm.PasswordInput
           inputValue={state.password}
           handleChange={handleChange}
+          type="normal"
+        />
+        <AppForm.PasswordInput
+          inputValue={state.password}
+          handleChange={handleChange}
+          type="confirm"
         />
         <AppForm.GenderInput
           inputValue={state.gender}
           handleChange={handleChange}
         />
-        <AppForm.BirthdayInput />
       </div>
-      <div className="col-12 col-md-6">
+      <div className="col-12 col-lg-6">
         <AppForm.ImageInput
           inputValue={state.avatar}
           handleChange={handleChange}
         />
+        <AppForm.ColorInput
+          inputValue={state.color}
+          handleChange={handleChange}
+        />
+        <AppForm.BirthdayInput
+          inputValue={state.birthday}
+          handleChange={handleChange}
+        />
       </div>
 
-      <button type="submit" className="btn btn-primary col-6 col-md-2">
-        Submit
-      </button>
+      <div className="col-6 col-lg-2">
+        <button type="submit" className="btn btn-danger">
+          Submit
+        </button>
+      </div>
     </form>
   );
 }

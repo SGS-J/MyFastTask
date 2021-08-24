@@ -79,7 +79,7 @@ export default function AvatarModal({ defaultAvatar, avatar, handleChange }) {
             </button>
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-danger"
               onClick={handleClickSetAvatar}
             >
               Ok!

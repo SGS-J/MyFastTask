@@ -1,6 +1,3 @@
-@use "./variable" as var;
-@use "./mixin" as mixin;
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -15,52 +12,9 @@ code {
     monospace;
 }
 
-#avatar-input {
-  @include mixin.avatar_input();
-  position: relative;
-  cursor: pointer;
-
-  .icon-edit-wrapper {
-    position: absolute;
-    display: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    background: #fff;
-  }
-
-  &:hover > {
-    .icon-edit-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-
-  &:hover::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #ced4da55;
-    border-radius: inherit;
-  }
-
-  img {
-    border-radius: 50%;
-  }
-}
-
-#avatar-preview {
-  @include mixin.avatar_input();
-
-  .default-image {
-    border-radius: 50%;
-  }
-}
-
-#date-picker-box {
-  input[type="text"] {
-    border: 1px solid #ced4da;
-  }
+.form-page-main {
+  background: url("./../assets/pexels-breakingpic-3243.jpg") no-repeat fixed
+    center;
+  background-size: cover;
+  min-height: 100vh;
 }

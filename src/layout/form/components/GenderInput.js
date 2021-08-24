@@ -6,7 +6,10 @@ export default function GenderInput({ inputValue, handleChange }) {
       <label htmlFor="form-check-box" className="form-label">
         Gender
       </label>
-      <div id="form-check-box" className="container">
+      <div
+        id="form-check-box"
+        className="container bg-white rounded text-black p-2 position-relative"
+      >
         <div className="form-check form-check-inline">
           <input
             className="form-check-input"
@@ -16,6 +19,7 @@ export default function GenderInput({ inputValue, handleChange }) {
             value="male"
             checked={inputValue === "male"}
             onChange={(e) => handleChange(e.target.name, e.target.value)}
+            required
           />
           <label className="form-check-label" htmlFor="inlineRadio1">
             Male
@@ -29,7 +33,7 @@ export default function GenderInput({ inputValue, handleChange }) {
             id="inlineRadio2"
             value="female"
             checked={inputValue === "female"}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
           />
           <label className="form-check-label" htmlFor="inlineRadio2">
             Female
@@ -43,11 +47,12 @@ export default function GenderInput({ inputValue, handleChange }) {
             id="inlineRadio3"
             value="unknown"
             checked={inputValue === "unknown"}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e.target.name, e.target.value)}
           />
           <label className="form-check-label" htmlFor="inlineRadio3">
             I'd prefer not to say
           </label>
+          <div className="invalid-tooltip">Select your gender if apply</div>
         </div>
       </div>
     </div>

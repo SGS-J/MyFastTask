@@ -1,12 +1,10 @@
 import React from "react";
 import SignUpForm from "./components/SignUpForm";
 
-export default function Loginpage() {
+export default function RegisterPage() {
   return (
-    <main className="row justify-content-center">
-      <div className="container col-11 col-md-6 m-5">
-        <SignUpForm />
-      </div>
+    <main className="row justify-content-center form-page-main">
+      <SignUpForm />
     </main>
   );
 }
