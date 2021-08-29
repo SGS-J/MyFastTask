@@ -34,8 +34,8 @@ function NavbarLogged() {
           </a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="settings">
-            Settings
+          <a className="nav-link" href="config">
+            Configuration
           </a>
         </li>
       </ul>
@@ -45,7 +45,7 @@ function NavbarLogged() {
 
 export default function Navigation() {
   const location = useLocation();
-  const regex = /\/\w+\/(me|settings|tasks)/;
+  const regex = /\/\w+\/(me|config|tasks)/;
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-danger">
       <div className="container-fluid">

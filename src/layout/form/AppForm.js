@@ -4,9 +4,11 @@ import GenderInput from "./components/GenderInput";
 import BirthdayInput from "./components/BirthdayInput";
 import ColorInput from "./components/ColorInput";
 import ImageInput from "./components/ImageInput/ImageInput";
+import LogInForm from "./components/LogInForm";
+import SignUpForm from "./components/SignUpForm";
 
 const AppForm = {
-  disableInvalidFormDefault: () => {
+  disableInvalidFormDefault: function () {
     const forms = document.querySelectorAll(".needs-validation");
     Array.prototype.slice.call(forms).forEach(function (form) {
       form.addEventListener(
@@ -22,6 +24,36 @@ const AppForm = {
         false
       );
     });
+  },
+  LogInForm: function ({ email, password, handleChange }) {
+    return (
+      <LogInForm
+        email={email}
+        password={password}
+        handleChange={handleChange}
+      />
+    );
+  },
+  SignUpForm: function ({
+    email,
+    password,
+    gender,
+    birthday,
+    color,
+    avatar,
+    handleChange,
+  }) {
+    return (
+      <SignUpForm
+        email={email}
+        password={password}
+        gender={gender}
+        birthday={birthday}
+        color={color}
+        avatar={avatar}
+        handleChange={handleChange}
+      />
+    );
   },
   EmailInput: function ({ inputValue, handleChange }) {
     return <EmailInput inputValue={inputValue} handleChange={handleChange} />;

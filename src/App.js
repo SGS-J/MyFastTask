@@ -2,7 +2,7 @@ import HomePage from "./pages/Home/home";
 import LoginPage from "./pages/Login/login";
 import RegisterPage from "./pages/Register/register";
 import Navigation from "./layout/template/Navigation";
-import UserPageRouter from "./pages/UserPage/UserPageRouter";
+import UserPageRouter from "./pages/UserPage/userPageRouter";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
