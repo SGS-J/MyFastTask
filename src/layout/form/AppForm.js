@@ -37,6 +37,7 @@ const AppForm = {
   SignUpForm: function ({
     email,
     password,
+    confPassword,
     gender,
     birthday,
     color,
@@ -47,6 +48,7 @@ const AppForm = {
       <SignUpForm
         email={email}
         password={password}
+        confPassword={confPassword}
         gender={gender}
         birthday={birthday}
         color={color}

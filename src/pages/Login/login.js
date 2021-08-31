@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import LogInForm from "./components/LogInForm";
+import AppForm from "./../../layout/form/AppForm";
 
 const initialState = {
   email: "",
@@ -25,7 +25,7 @@ export default function LoginPage() {
 
   return (
     <main className="row justify-content-center align-items-center form-page-main">
-      <LogInForm
+      <AppForm.LogInForm
         email={state.email}
         password={state.password}
         handleChange={handleChange}

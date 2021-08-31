@@ -4,6 +4,7 @@ import AppForm from "../AppForm";
 export default function SignUpForm({
   email,
   password,
+  confPassword,
   gender,
   birthday,
   color,
@@ -21,34 +22,22 @@ export default function SignUpForm({
     >
       <h1 className="col-12 mb-3">REGISTER</h1>
       <div className="col-12 col-lg-6">
-        <AppForm.EmailInput
-          inputValue={email}
-          handleChange={() => handleChange("email", email)}
-        />
+        <AppForm.EmailInput inputValue={email} handleChange={handleChange} />
         <AppForm.PasswordInput
           inputValue={password}
-          handleChange={() => handleChange("password", password)}
+          handleChange={handleChange}
           type="normal"
         />
         <AppForm.PasswordInput
-          inputValue={password}
-          handleChange={() => handleChange("confirm-password", password)}
+          inputValue={confPassword}
+          handleChange={handleChange}
           type="confirm"
         />
-        <AppForm.GenderInput
-          inputValue={gender}
-          handleChange={() => handleChange("gender", gender)}
-        />
+        <AppForm.GenderInput inputValue={gender} handleChange={handleChange} />
       </div>
       <div className="col-12 col-lg-6">
-        <AppForm.ImageInput
-          inputValue={avatar}
-          handleChange={() => handleChange("avatar", avatar)}
-        />
-        <AppForm.ColorInput
-          inputValue={color}
-          handleChange={() => handleChange("color", color)}
-        />
+        <AppForm.ImageInput inputValue={avatar} handleChange={handleChange} />
+        <AppForm.ColorInput inputValue={color} handleChange={handleChange} />
         <AppForm.BirthdayInput
           inputValue={birthday}
           handleChange={handleChange}

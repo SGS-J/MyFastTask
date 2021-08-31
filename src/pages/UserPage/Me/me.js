@@ -1,4 +1,4 @@
-import AppForm from "./../../../layout/form/AppForm";
+import EditUser from "./components/EditUser";
 import { useParams } from "react-router-dom";
 
 export default function MePage() {
@@ -7,7 +7,7 @@ export default function MePage() {
   return (
     <>
       <div>
-        <h1></h1>
+        <EditUser />
       </div>
     </>
   );

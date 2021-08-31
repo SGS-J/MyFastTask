@@ -5,7 +5,7 @@ import DefaultAvatar from "./../../assets/default.png";
 const initialState = {
   email: "",
   password: "",
-  "confirm-password": "",
+  confPassword: "",
   gender: "",
   birthday: new Date(),
   color: "#B80000",
@@ -17,9 +17,15 @@ const reducer = (state, action) => {
     case "email":
       return { ...state, email: action.value };
     case "password":
-      return { ...state, password: action.value };
+      return {
+        ...state,
+        password: action.value,
+      };
     case "confirm-password":
-      return { ...state, "confirm-password": action.value };
+      return {
+        ...state,
+        confPassword: action.value,
+      };
     case "gender":
       return { ...state, gender: action.value };
     case "birthday":
@@ -43,7 +49,16 @@ export default function RegisterPage() {
 
   return (
     <main className="row justify-content-center form-page-main">
-      <AppForm.SignUpForm />
+      <AppForm.SignUpForm
+        email={state.email}
+        password={state.password}
+        confPassword={state.confPassword}
+        gender={state.gender}
+        birthday={state.birthday}
+        color={state.color}
+        avatar={state.avatar}
+        handleChange={handleChange}
+      />
     </main>
   );
 }
