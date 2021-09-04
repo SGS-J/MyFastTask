@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function GenderInput({ inputValue, handleChange }) {
+export default function GenderInput({ inputValue, handleChange, title }) {
   return (
     <div className="mb-3">
       <label htmlFor="form-check-box" className="form-label">
-        Gender
+        {title}
       </label>
       <div
         id="form-check-box"

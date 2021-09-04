@@ -18,7 +18,7 @@ const colors = [
   "#C4DEF6",
 ];
 
-export default function ColorInput({ inputValue, handleChange }) {
+export default function ColorInput({ inputValue, handleChange, title }) {
   const [active, setActive] = useState(false);
   const handleClickPanel = () => {
     setActive(!active);
@@ -26,7 +26,7 @@ export default function ColorInput({ inputValue, handleChange }) {
 
   return (
     <div className="mt-3">
-      <label htmlFor="avatar-input">Choose your favorite color:</label>
+      <label htmlFor="avatar-input">{title}</label>
       <div id="color-input" className="mt-3" onClick={handleClickPanel}>
         <div
           className="color-input-panel mb-3"

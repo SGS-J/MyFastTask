@@ -57,31 +57,60 @@ const AppForm = {
       />
     );
   },
-  EmailInput: function ({ inputValue, handleChange }) {
-    return <EmailInput inputValue={inputValue} handleChange={handleChange} />;
+  EmailInput: function ({ inputValue, handleChange, title }) {
+    return (
+      <EmailInput
+        inputValue={inputValue}
+        handleChange={handleChange}
+        title={title}
+      />
+    );
   },
-  PasswordInput: function ({ inputValue, handleChange, type }) {
+  PasswordInput: function ({ inputValue, handleChange, type, title }) {
     return (
       <PasswordInput
         inputValue={inputValue}
         handleChange={handleChange}
         type={type}
+        title={title}
       />
     );
   },
-  GenderInput: function ({ inputValue, handleChange }) {
-    return <GenderInput inputValue={inputValue} handleChange={handleChange} />;
-  },
-  BirthdayInput: function ({ inputValue, handleChange }) {
+  GenderInput: function ({ inputValue, handleChange, title }) {
     return (
-      <BirthdayInput inputValue={inputValue} handleChange={handleChange} />
+      <GenderInput
+        inputValue={inputValue}
+        handleChange={handleChange}
+        title={title}
+      />
     );
   },
-  ColorInput: function ({ inputValue, handleChange }) {
-    return <ColorInput inputValue={inputValue} handleChange={handleChange} />;
+  BirthdayInput: function ({ inputValue, handleChange, title }) {
+    return (
+      <BirthdayInput
+        inputValue={inputValue}
+        handleChange={handleChange}
+        title={title}
+      />
+    );
   },
-  ImageInput: function ({ inputValue, handleChange }) {
-    return <ImageInput inputValue={inputValue} handleChange={handleChange} />;
+  ColorInput: function ({ inputValue, handleChange, title }) {
+    return (
+      <ColorInput
+        inputValue={inputValue}
+        handleChange={handleChange}
+        title={title}
+      />
+    );
+  },
+  ImageInput: function ({ inputValue, handleChange, title }) {
+    return (
+      <ImageInput
+        inputValue={inputValue}
+        handleChange={handleChange}
+        title={title}
+      />
+    );
   },
 };
 

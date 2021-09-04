@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function EmailInput({ inputValue, handleChange }) {
+export default function EmailInput({ inputValue, handleChange, title }) {
   return (
     <div className="mb-3 position-relative">
-      <label className="form-label">Email address</label>
+      <label className="form-label">{title}</label>
       <input
         name="email"
         type="email"
