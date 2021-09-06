@@ -3,7 +3,9 @@ import TaskCreation from "./components/TaskCreation/TaskCreation";
 import TaskPanel from "./components/TaskPanel/TaskPanel";
 
 const initialState = {
-  tasks: [],
+  tasksPanel1: [],
+  tasksPanel2: [],
+  tasksPanel3: [],
   tasktToAddTitle: "",
   taskToAddDescription: "",
 };
@@ -18,9 +20,10 @@ const reducer = (state, action) => {
       const title = state.tasktToAddTitle;
       const description = state.taskToAddDescription;
       return {
+        ...state,
         tasktToAddTitle: "",
         taskToAddDescription: "",
-        tasks: state.tasks.concat({ title, description }),
+        tasksPanel1: state.tasksPanel1.concat({ title, description }),
       };
     }
 
@@ -47,7 +50,11 @@ export default function TasksPage() {
         handleChange={handleChange}
         handleCreateTask={handleCreateTask}
       />
-      <TaskPanel tasks={state.tasks} />
+      <TaskPanel
+        tasksPanel1={state.tasksPanel1}
+        tasksPanel2={state.tasksPanel2}
+        tasksPanel3={state.tasksPanel3}
+      />
     </main>
   );
 }
