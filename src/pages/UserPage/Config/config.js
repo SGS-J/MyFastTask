@@ -1,3 +1,9 @@
+import EditUser from "./components/EditUser";
+
 export default function ConfigPage() {
-  return <h1>Config will be here</h1>;
+  return (
+    <main className="row justify-content-center">
+      <EditUser />
+    </main>
+  )
 }

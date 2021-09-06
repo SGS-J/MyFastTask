@@ -1,4 +1,4 @@
-import AppForm from "./../../../../layout/form/AppForm";
+import AppForm from "../../../../layout/form/AppForm";
 import React, { useReducer } from "react";
 
 const initialState = {
@@ -30,30 +30,32 @@ export default function EditUser() {
     dispatch({ type, value });
   };
   return (
-    <div className="container mt-5">
+    <form className="row container col-11 col-lg-6 my-5 p-5" noValidate>
       <h3>Edit your user:</h3>
-      <form className="row">
+      <div className="col-6">
         <AppForm.GenderInput
           inputValue={state.gender}
           handleChange={handleChange}
-          title="Gender"
+          title="Gender:"
         />
         <AppForm.ColorInput
           inputValue={state.color}
           handleChange={handleChange}
-          title="Choose another UI color"
+          title="Choose another UI color:"
         />
         <AppForm.BirthdayInput
           inputValue={state.birthday}
           handleChange={handleChange}
-          title="Change your birthday"
+          title="Change your birthday:"
         />
+      </div>
+      <div className="col-6">
         <AppForm.ImageInput
           inputValue={state.avatar}
           handleChange={handleChange}
-          title="Change your avatar"
+          title="Change your avatar:"
         />
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }

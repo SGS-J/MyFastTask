@@ -3,11 +3,11 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function BirthdayInput({ inputValue, handleChange }) {
+export default function BirthdayInput({ inputValue, handleChange, title }) {
   return (
     <div className="mb-3">
       <label htmlFor="date-picker-box" className="form-label">
-        Your birthday:
+        {title}
       </label>
       <div id="date-picker-box">
         <DatePicker
