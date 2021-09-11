@@ -31,8 +31,11 @@ export default function TaskPanel({
         id="task-panel"
         className="col-10 col-sm-9 row pt-5 justify-content-center"
       >
-        <div className="col-12 col-sm-9 col-lg-4 p-1 card">
-          <div className="card-header">Important & urgent</div>
+        <div
+          className="col-11 col-md-4 p-1 card"
+          style={{ height: "80vh", overflowY: "scroll" }}
+        >
+          <div className="card-header sticky-top">Important & urgent</div>
           <Droppable droppableId={tasksPanel1.id}>
             {(provided) => (
               <div
@@ -57,8 +60,11 @@ export default function TaskPanel({
           </Droppable>
         </div>
 
-        <div className="col-12 col-sm-9 col-lg-4 p-1 card">
-          <div className="card-header">Urgent not important</div>
+        <div
+          className="col-11 col-md-4 p-1 card"
+          style={{ height: "80vh", overflowY: "scroll" }}
+        >
+          <div className="card-header sticky-top">Urgent not important</div>
           <Droppable droppableId={tasksPanel2.id}>
             {(provided) => (
               <div
@@ -83,8 +89,11 @@ export default function TaskPanel({
           </Droppable>
         </div>
 
-        <div className="col-12 col-sm-9 col-lg-4 p-1 card">
-          <div className="card-header">Important not urgent</div>
+        <div
+          className="col-11 col-md-4 p-1 card"
+          style={{ height: "80vh", overflowY: "scroll" }}
+        >
+          <div className="card-header sticky-top">Important not urgent</div>
           <Droppable droppableId={tasksPanel3.id}>
             {(provided) => (
               <div

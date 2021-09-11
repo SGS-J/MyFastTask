@@ -53,6 +53,7 @@ const reducer = (state, action) => {
       };
     }
     case "update-task-panel": {
+      let newState = { ...state };
       const {
         taskId,
         sourcePanelId,
@@ -69,23 +70,40 @@ const reducer = (state, action) => {
       const task = state[sourcePanel].content.find(
         (task) => task.taskId === taskId
       );
-      const newSourceColumn = Array.from(state[sourcePanel].content);
-      const newDestinationColumn = Array.from(state[destinationPanel].content);
+      if (sourcePanel === destinationPanel) {
+        const newColumn = Array.from(state[destinationPanel].content);
+        newColumn.splice(sourcePanelIndex, 1);
+        newColumn.splice(destinationPanelIndex, 0, task);
+        newState = {
+          ...state,
+          [destinationPanel]: {
+            ...state[destinationPanel],
+            content: newColumn,
+          },
+        };
+      } else {
+        const newSourceColumn = Array.from(state[sourcePanel].content);
+        const newDestinationColumn = Array.from(
+          state[destinationPanel].content
+        );
 
-      newSourceColumn.splice(sourcePanelIndex, 1);
-      newDestinationColumn.splice(destinationPanelIndex, 0, task);
+        newSourceColumn.splice(sourcePanelIndex, 1);
+        newDestinationColumn.splice(destinationPanelIndex, 0, task);
 
-      return {
-        ...state,
-        [sourcePanel]: {
-          ...state[sourcePanel],
-          content: newSourceColumn,
-        },
-        [destinationPanel]: {
-          ...state[destinationPanel],
-          content: newDestinationColumn,
-        },
-      };
+        newState = {
+          ...state,
+          [sourcePanel]: {
+            ...state[sourcePanel],
+            content: newSourceColumn,
+          },
+          [destinationPanel]: {
+            ...state[destinationPanel],
+            content: newDestinationColumn,
+          },
+        };
+      }
+
+      return newState;
     }
 
     default:

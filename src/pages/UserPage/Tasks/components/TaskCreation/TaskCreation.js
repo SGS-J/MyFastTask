@@ -47,6 +47,7 @@ export default function TaskCreation({
                   taskDescription={taskDescription}
                   handleChange={handleChange}
                   handleCreateTask={handleCreateTask}
+                  modal
                 />
               </div>
             </div>

@@ -8,7 +8,7 @@ export default function TaskCard({ taskId, title, description, index }) {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
-          className="card"
+          className="card mb-3"
         >
           <div className="card-body">
             <h5 className="card-title">{title}</h5>

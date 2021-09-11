@@ -3,6 +3,7 @@ export default function TaskCreationForm({
   taskDescription,
   handleChange,
   handleCreateTask,
+  modal,
 }) {
   return (
     <form className="p-3 p-lg-5">
@@ -28,6 +29,7 @@ export default function TaskCreationForm({
         className="btn btn-primary mt-3"
         disabled={!taskTitle}
         onClick={handleCreateTask}
+        data-bs-dismiss={modal && "modal"}
       >
         Add
       </button>
