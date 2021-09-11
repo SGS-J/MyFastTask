@@ -21,7 +21,9 @@ export default function TaskCreationForm({
         className="form-control"
         value={taskDescription}
         onChange={(e) => handleChange("description", e.target.value)}
-      ></textarea>
+      >
+        {" "}
+      </textarea>
       <button
         className="btn btn-primary mt-3"
         disabled={!taskTitle}

@@ -37,7 +37,9 @@ export default function TaskCreation({
                   className="btn-close d-lg-none"
                   data-bs-dismiss="modal"
                   aria-label="Close"
-                ></button>
+                >
+                  {" "}
+                </button>
               </div>
               <div className="modal-body">
                 <TaskCreationForm
