@@ -1,9 +1,7 @@
-import React, { useEffect, useReducer, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useReducer, useState } from "react";
 
-import AppForm from "./../../layout/form/AppForm";
-import DefaultAvatar from "./../../assets/default.png";
+import Form from "./Form";
+import DefaultAvatar from "@/public/default.png";
 
 const initialState = {
   username: "",
@@ -49,10 +47,9 @@ const reducer = (state, action) => {
   }
 };
 
-export default function RegisterPage() {
+export default function SignUpForm() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [emailInUse, setEmailInUse] = useState(false);
-  const navigate = useNavigate();
 
   const handleChange = (type, value) => {
     dispatch({ type, value });
@@ -73,11 +70,6 @@ export default function RegisterPage() {
     }
 
     try {
-      await axios.post(`/user/register`, fd, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
       navigate("/user/login");
     } catch ({ response }) {
       const { errors } = response.data;
@@ -88,7 +80,7 @@ export default function RegisterPage() {
   };
 
   useEffect(() => {
-    AppForm.disableInvalidFormDefault();
+    Form.disableInvalidFormDefault();
   }, []);
 
   return (
@@ -100,48 +92,48 @@ export default function RegisterPage() {
       >
         <h1 className="col-12 mb-3">REGISTER</h1>
         <div className="has-validation col-12 col-lg-6">
-          <AppForm.EmailInput
+          <Form.EmailInput
             inputValue={state.email}
             handleChange={handleChange}
             title="Email Address"
             emailInUse={state.emailInUse}
           />
-          <AppForm.PasswordInput
+          <Form.PasswordInput
             inputValue={state.password}
             handleChange={handleChange}
             type="normal"
             title="Password"
           />
-          <AppForm.PasswordInput
+          <Form.PasswordInput
             inputValue={state["conf-password"]}
             handleChange={handleChange}
             type="confirm"
             title="Confirm Password"
             targetConfirm={state.password}
           />
-          <AppForm.UserNameInput
+          <Form.UserNameInput
             inputValue={state.username}
             handleChange={handleChange}
             title="How we name you?"
           />
-          <AppForm.GenderInput
+          <Form.GenderInput
             inputValue={state.gender}
             handleChange={handleChange}
             title="Gender"
           />
         </div>
         <div className="col-12 col-lg-6">
-          <AppForm.ImageInput
+          <Form.ImageInput
             inputValue={state.avatar}
             handleChange={handleChange}
             title="Avatar"
           />
-          <AppForm.BirthdayInput
+          <Form.BirthdayInput
             inputValue={state.birthday}
             handleChange={handleChange}
             title="Your birthday was:"
           />
-          <AppForm.ColorInput
+          <Form.ColorInput
             inputValue={state.color}
             handleChange={handleChange}
             title="Choose your favorite color:"

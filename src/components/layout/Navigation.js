@@ -10,7 +10,7 @@ function NavbarNotLogged() {
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" href="/register">
+          <Link className="nav-link" href="/signup">
             Sign Up
           </Link>
         </li>

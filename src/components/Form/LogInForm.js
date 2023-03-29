@@ -1,7 +1,5 @@
-import React, { useEffect, useReducer } from "react";
-import AppForm from "./../../layout/form/AppForm";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useReducer } from "react";
+import Form from "./Form";
 
 const initialState = {
   email: "",
@@ -19,9 +17,8 @@ const reducer = (state, action) => {
   }
 };
 
-export default function LoginPage({ submitUser }) {
+export default function LogInForm({ submitUser }) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const navigate = useNavigate();
 
   const handleChange = (type, value) => {
     dispatch({ type, value });
@@ -30,18 +27,16 @@ export default function LoginPage({ submitUser }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/user/login", state);
       console.log(res);
       const { userLogged } = res.data;
       submitUser(userLogged);
-      navigate(`/user/${userLogged}/me`);
     } catch (err) {
       alert("Incorrect user or password!");
     }
   };
 
   useEffect(() => {
-    AppForm.disableInvalidFormDefault();
+    Form.disableInvalidFormDefault();
   }, []);
 
   return (
@@ -51,12 +46,12 @@ export default function LoginPage({ submitUser }) {
         onSubmit={handleSubmit}
       >
         <h1 className="mb-3">LOG IN</h1>
-        <AppForm.EmailInput
+        <Form.EmailInput
           title="Email Address"
           inputValue={state.email}
           handleChange={handleChange}
         />
-        <AppForm.PasswordInput
+        <Form.PasswordInput
           inputValue={state.password}
           handleChange={handleChange}
           type="normal"
