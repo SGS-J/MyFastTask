@@ -1,6 +1,6 @@
-import userModel from "./model";
-import validator from "../../middleware/validator/user-validator";
-import formHandler from "../../middleware/multer/index";
+import userModel from "./model.js";
+import validator from "../../middleware/validator/user-validator.js";
+import formHandler from "../../middleware/multer/index.js";
 import passport from "passport";
 import config from "config";
 
@@ -16,7 +16,7 @@ export default {
         name: req.body.username,
         password: req.body.password,
         gender: req.body.gender || "Unknown",
-        birthday: {date: req.body.birthday},
+        birthday: { date: req.body.birthday },
         UIColor: req.body.UIColor || "#DB3E00",
         avatar: req.files[0],
       });
@@ -27,7 +27,7 @@ export default {
     passport.authenticate("login"),
     (req, res) => {
       req.app.locals.userLogged = req.body.email;
-      res.json({userLogged: req.body.email});
+      res.json({ userLogged: req.body.email });
     },
   ],
   logoutUser(req, res) {
@@ -53,7 +53,7 @@ export default {
   updateUser: [
     formHandler.uploadFields(),
     async (req, res) => {
-      const {name, gender, birthday, UIColor, avatar} = req.body;
+      const { name, gender, birthday, UIColor, avatar } = req.body;
       const ok = await userModel.updateUser(req.app.locals.userLogged, {
         name,
         gender,
@@ -63,7 +63,7 @@ export default {
       });
       if (ok) {
         if (name) req.app.locals.userLogged = name;
-        res.json({message: "You've updated your data!"});
+        res.json({ message: "You've updated your data!" });
       } else res.status(400).end();
     },
   ],

@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { encryptPassword } from "../../security/encrypt";
+import { encryptPassword } from "../../security/encrypt.js";
 import moment from "moment";
 
 const userSchema = new Schema({

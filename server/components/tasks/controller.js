@@ -1,4 +1,4 @@
-import taskModel from "./model";
+import taskModel from "./model.js";
 
 export default {
   async createTask(req, res) {

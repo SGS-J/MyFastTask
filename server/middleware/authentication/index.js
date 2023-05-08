@@ -1,2 +1,2 @@
-import "./auth-user";
-import "./passport-config";
+import "./auth-user.js";
+import "./passport-config.js";

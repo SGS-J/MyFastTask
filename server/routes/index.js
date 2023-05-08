@@ -1,7 +1,7 @@
 import { Router } from "express";
-import userRouter from "../components/users/routes";
-import taskRouter from "../components/tasks/routes";
-import homeRouter from "../components/home/routes";
+import userRouter from "../components/users/routes.js";
+import taskRouter from "../components/tasks/routes.js";
+import homeRouter from "../components/home/routes.js";
 
 const router = Router();
 

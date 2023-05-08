@@ -1,5 +1,5 @@
 import { body, validationResult } from "express-validator";
-import userModel from "../../components/users/model";
+import userModel from "../../components/users/model.js";
 import moment from "moment";
 
 export default {

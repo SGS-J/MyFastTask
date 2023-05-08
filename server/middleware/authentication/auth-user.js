@@ -1,7 +1,7 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import userModel from "../../components/users/model";
-import { matchPassword } from "../../services/security/encrypt";
+import userModel from "../../components/users/model.js";
+import { matchPassword } from "../../services/security/encrypt.js";
 
 passport.use(
   "login",

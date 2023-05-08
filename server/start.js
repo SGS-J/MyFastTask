@@ -1,13 +1,13 @@
 // External libraries(local included)
-import { connectToDB } from "./services/mongodb/database";
-import server from "./app";
-import { get, util } from "config";
+import { connectToDB } from "./services/mongodb/database.js";
+import server from "./app.js";
+import config from "config";
 import next from "next";
 
 // Init Config
-const port = get("serverConfig.port");
-const hostname = get("serverConfig.host");
-const ENV = util.getEnv("NODE_ENV");
+const port = config.get("serverConfig.port");
+const hostname = config.get("serverConfig.host");
+const ENV = config.util.getEnv("NODE_ENV");
 
 // NextJS Config
 const dev = ENV !== "production";

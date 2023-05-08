@@ -1,8 +1,8 @@
-import {Router} from "express";
-import controller from "./controller";
+import { Router } from "express";
+import controller from "./controller.js";
 
-const router = Router()
+const router = Router();
 
-router.get('/', controller.verifyUnauthentication);
+router.get("/", controller.verifyUnauthentication);
 
 export default router;

@@ -1,13 +1,13 @@
 import { Router } from "express";
-import controller from "./controller";
+import controller from "./controller.js";
 
 const router = Router();
 
-router.get('/', controller.getAllTasks)
-router.get('/done', controller.getTasksMade);
-router.post('/', controller.createTask)
-router.patch('/:id/complete', controller.completeTask)
-router.put('/:id', controller.updateTask)
-router.delete('/:id', controller.removeTask)
+router.get("/", controller.getAllTasks);
+router.get("/done", controller.getTasksMade);
+router.post("/", controller.createTask);
+router.patch("/:id/complete", controller.completeTask);
+router.put("/:id", controller.updateTask);
+router.delete("/:id", controller.removeTask);
 
 export default router;

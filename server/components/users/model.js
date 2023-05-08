@@ -1,5 +1,5 @@
-import userDao from "./DAO";
-import userDto from "./DTO";
+import userDao from "./DAO.js";
+import userDto from "./DTO.js";
 
 export default {
   addUser(user) {

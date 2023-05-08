@@ -1,4 +1,4 @@
-import UserCollection from "../../services/mongoDb/schemas/User.schema";
+import UserCollection from "../../services/mongodb/schemas/User.schema.js";
 
 export default {
   async addUser(user) {

@@ -3,10 +3,10 @@ import logger from "morgan";
 import config from "config";
 import passport from "passport";
 import expressSession from "express-session";
-import indexRouter from "./routes/index";
-import errorHandler from "./middleware/error-handler";
-import corsMiddleware from "./middleware/cors";
-import "./middleware/authentication/index";
+import indexRouter from "./routes/index.js";
+import errorHandler from "./middleware/error-handler.js";
+import corsMiddleware from "./middleware/cors.js";
+import "./middleware/authentication/index.js";
 
 const app = express();
 app.use(corsMiddleware());

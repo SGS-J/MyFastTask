@@ -1,4 +1,4 @@
-import taskDao from "./DAO";
+import taskDao from "./DAO.js";
 
 export default {
   createTask(task) {

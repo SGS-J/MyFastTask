@@ -1,7 +1,7 @@
-import uploadFields from './content/field-user-data';
+import uploadFields from "./content/field-user-data.js";
 
 export default {
-   uploadFields() {
-      return uploadFields();
-   },
+  uploadFields() {
+    return uploadFields();
+  },
 };
