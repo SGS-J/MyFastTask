@@ -29,8 +29,9 @@
     "react": "18.2.0",
     "react-avatar-edit": "^1.2.0",
     "react-beautiful-dnd": "^13.1.1",
+    "react-calendar": "^4.2.1",
     "react-color": "^2.19.3",
-    "react-datepicker": "^4.11.0",
+    "react-date-picker": "^10.0.3",
     "react-dom": "18.2.0",
     "sass": "^1.60.0",
     "validator": "^13.9.0"

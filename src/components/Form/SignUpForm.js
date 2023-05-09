@@ -123,11 +123,11 @@ export default function SignUpForm() {
           />
         </div>
         <div className="col-12 col-lg-6">
-          <Form.ImageInput
+          {/*<Form.ImageInput
             inputValue={state.avatar}
             handleChange={handleChange}
             title="Avatar"
-          />
+  />*/}
           <Form.BirthdayInput
             inputValue={state.birthday}
             handleChange={handleChange}

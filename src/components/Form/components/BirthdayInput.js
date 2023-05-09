@@ -1,6 +1,7 @@
-import DatePicker from "react-datepicker";
+import DatePicker from "react-date-picker";
 
-import "react-datepicker/dist/react-datepicker.css";
+import "react-date-picker/dist/DatePicker.css";
+import "react-calendar/dist/Calendar.css";
 
 export default function BirthdayInput({ inputValue, handleChange, title }) {
   return (
@@ -9,11 +10,7 @@ export default function BirthdayInput({ inputValue, handleChange, title }) {
         {title}
       </label>
       <div id="date-picker-box">
-        <DatePicker
-          selected={inputValue}
-          onChange={(date) => handleChange("birthday", date)}
-          dateFormat="dd/MM/yyyy"
-        />
+        <DatePicker onChange={(date) => handleChange("birthday", date)} />
       </div>
     </div>
   );
