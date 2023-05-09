@@ -1,9 +1,7 @@
-import React from "react";
 import { createPortal } from "react-dom";
 import { Modal } from "bootstrap";
 import AvatarModal from "./components/AvatarModal";
 import defaultAvatar from "@/public/default.png";
-import Index from "@/pages";
 
 export default function ImageInput({ inputValue, handleChange, title }) {
   const handleClickAvatar = () => {
