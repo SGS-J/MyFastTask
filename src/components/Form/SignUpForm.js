@@ -79,9 +79,7 @@ export default function SignUpForm() {
     }
   };
 
-  useEffect(() => {
-    Form.disableInvalidFormDefault();
-  }, []);
+  Form.disableInvalidFormDefault();
 
   return (
     <main className="row justify-content-center form-page-main">

@@ -1,5 +1,12 @@
+import dynamic from "next/dynamic";
 import { useState } from "react";
-import { GithubPicker } from "react-color";
+
+const GithubPicker = dynamic(
+  async () => (await import("react-color")).GithubPicker,
+  {
+    ssr: false,
+  }
+);
 
 const colors = [
   "#B80000",

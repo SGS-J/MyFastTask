@@ -5,24 +5,27 @@ import GenderInput from "./components/GenderInput";
 import BirthdayInput from "./components/BirthdayInput";
 import ColorInput from "./components/ColorInput";
 import ImageInput from "./components/ImageInput/ImageInput";
+import { useEffect } from "react";
 
 const Form = {
   disableInvalidFormDefault: function () {
-    const forms = document.querySelectorAll(".needs-validation");
-    Array.prototype.slice.call(forms).forEach(function (form) {
-      form.addEventListener(
-        "submit",
-        function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
+    useEffect(() => {
+      const forms = document.querySelectorAll(".needs-validation");
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener(
+          "submit",
+          function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
 
-          form.classList.add("was-validated");
-        },
-        false
-      );
-    });
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    }, []);
   },
   UserNameInput: function ({ inputValue, handleChange, title }) {
     return (

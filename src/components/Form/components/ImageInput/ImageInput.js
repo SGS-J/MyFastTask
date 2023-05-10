@@ -1,8 +1,12 @@
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { Modal } from "bootstrap";
 import AvatarModal from "./components/AvatarModal";
 import defaultAvatar from "@/public/default.png";
+import dynamic from "next/dynamic";
+
+const Modal = dynamic(async () => (await import("bootstrap")).Modal, {
+  ssr: false,
+});
 
 export default function ImageInput({ inputValue, handleChange, title }) {
   const handleClickAvatar = () => {

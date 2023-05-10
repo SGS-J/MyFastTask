@@ -1,17 +1,13 @@
 import { useState } from "react";
-import { Modal } from "bootstrap";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 
-// Using dynamic to import browser-only library
-const Avatar = dynamic(
-  async () => {
-    return (await import("react-avatar-edit")).default;
-  },
-  {
-    ssr: false,
-  }
-);
+const Avatar = dynamic(async () => await import("react-avatar-edit").default, {
+  ssr: false,
+});
+
+const Modal = dynamic(async () => (await import("bootstrap")).Modal, {
+  ssr: false,
+});
 
 export default function AvatarModal({ defaultAvatar, avatar, handleChange }) {
   const [src, setSrc] = useState(avatar);

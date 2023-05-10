@@ -35,9 +35,7 @@ export default function LogInForm({ submitUser }) {
     }
   };
 
-  useEffect(() => {
-    Form.disableInvalidFormDefault();
-  }, []);
+  Form.disableInvalidFormDefault();
 
   return (
     <main className="row justify-content-center align-items-center form-page-main">
