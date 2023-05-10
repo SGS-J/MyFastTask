@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Modal } from "bootstrap";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 
 // Using dynamic to import browser-only library
@@ -27,9 +28,10 @@ export default function AvatarModal({ defaultAvatar, avatar, handleChange }) {
   };
 
   const onBeforeFileLoad = (elem) => {
-    if (elem.target.files[0].size > 71680) {
+    const elm = elem.target;
+    if (elm.files[0].size > 71680) {
       alert("File is too big!");
-      elem.target.value = "";
+      elm.value = "";
     } else {
       setHasDefault(!hasDefault);
     }

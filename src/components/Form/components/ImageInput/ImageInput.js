@@ -1,4 +1,5 @@
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import { Modal } from "bootstrap";
 import AvatarModal from "./components/AvatarModal";
 import defaultAvatar from "@/public/default.png";
@@ -27,7 +28,7 @@ export default function ImageInput({ inputValue, handleChange, title }) {
           <div className="icon-edit-wrapper">
             <i className="fas fa-edit"></i>
           </div>
-          <img src={inputValue} alt="Avatar" />
+          <Image src={inputValue} alt="Avatar" fill />
         </div>
       </div>
     </>
