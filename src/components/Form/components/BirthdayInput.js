@@ -14,7 +14,10 @@ export default function BirthdayInput({ inputValue, handleChange, title }) {
         {title}
       </label>
       <div id="date-picker-box">
-        <DatePicker onChange={(date) => handleChange("birthday", date)} />
+        <DatePicker
+          onChange={(date) => handleChange("birthday", date)}
+          value={inputValue}
+        />
       </div>
     </div>
   );

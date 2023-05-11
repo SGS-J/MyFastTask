@@ -20,7 +20,7 @@ export default {
         UIColor: req.body.UIColor || "#DB3E00",
         avatar: req.files[0],
       });
-      res.end();
+      res.redirect("/login");
     },
   ],
   loginUser: [
@@ -33,7 +33,7 @@ export default {
   logoutUser(req, res) {
     req.app.locals.userLogged = "";
     req.logout();
-    res.end();
+    res.redirect("/login");
   },
   async getUser(req, res) {
     if (req.params.userEmail === req.app.locals.userLogged) {
@@ -73,6 +73,6 @@ export default {
     else res.end();
   },
   verifyAuthentication(req, res, next) {
-    req.isAuthenticated() ? next() : res.redirect("/user/login");
+    req.isAuthenticated() ? next() : res.redirect("/login");
   },
 };
