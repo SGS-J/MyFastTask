@@ -1,13 +1,12 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 
-const Avatar = dynamic(async () => await import("react-avatar-edit").default, {
-  ssr: false,
-});
-
-const Modal = dynamic(async () => (await import("bootstrap")).Modal, {
-  ssr: false,
-});
+const Avatar = dynamic(
+  async () => (await import("react-avatar-edit")).default,
+  {
+    ssr: false,
+  }
+);
 
 export default function AvatarModal({ defaultAvatar, avatar, handleChange }) {
   const [src, setSrc] = useState(avatar);
@@ -33,8 +32,9 @@ export default function AvatarModal({ defaultAvatar, avatar, handleChange }) {
     }
   };
 
-  const handleClickSetAvatar = () => {
+  const handleClickSetAvatar = async () => {
     handleChange("avatar", preview);
+    const { Modal } = await import("bootstrap");
     Modal.getOrCreateInstance(
       document.getElementById("avatar-edit-modal")
     ).hide();

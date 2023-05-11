@@ -1,31 +1,21 @@
-import { createPortal } from "react-dom";
 import Image from "next/image";
 import AvatarModal from "./components/AvatarModal";
 import defaultAvatar from "@/public/default.png";
-import dynamic from "next/dynamic";
-
-const Modal = dynamic(async () => (await import("bootstrap")).Modal, {
-  ssr: false,
-});
 
 export default function ImageInput({ inputValue, handleChange, title }) {
-  const handleClickAvatar = () => {
-    const avatarModal = Modal.getOrCreateInstance(
-      document.getElementById("avatar-edit-modal")
-    );
-    avatarModal.toggle();
+  const handleClickAvatar = async () => {
+    const { Modal } = await import("bootstrap");
+    const dialogModal = Modal.getOrCreateInstance("#avatar-edit-modal");
+    dialogModal.toggle();
   };
 
   return (
     <>
-      {createPortal(
-        <AvatarModal
-          defaultAvatar={defaultAvatar}
-          avatar={defaultAvatar === inputValue ? "" : inputValue}
-          handleChange={handleChange}
-        />,
-        document.body
-      )}
+      <AvatarModal
+        defaultAvatar={defaultAvatar}
+        avatar={defaultAvatar === inputValue ? "" : inputValue}
+        handleChange={handleChange}
+      />
       <div className="mt-3">
         <label htmlFor="avatar-input">{title}</label>
         <div id="avatar-input" onClick={handleClickAvatar}>
