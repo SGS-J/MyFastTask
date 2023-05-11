@@ -2,6 +2,7 @@ import { useEffect, useReducer, useState } from "react";
 
 import Form from "./Form";
 import DefaultAvatar from "@/public/default.png";
+import { useRouter } from "next/router";
 
 const initialState = {
   username: "",
@@ -48,6 +49,7 @@ const reducer = (state, action) => {
 };
 
 export default function SignUpForm() {
+  const router = useRouter();
   const [state, dispatch] = useReducer(reducer, initialState);
   const [emailInUse, setEmailInUse] = useState(false);
 
@@ -70,7 +72,12 @@ export default function SignUpForm() {
     }
 
     try {
-      navigate("/user/login");
+      const res = await fetch("/user/register", {
+        body: fd,
+        method: "POST",
+      });
+
+      router.push(res.url);
     } catch ({ response }) {
       const { errors } = response.data;
       if (Object.values(errors[0]).includes(state.email)) {

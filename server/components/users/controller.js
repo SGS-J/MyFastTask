@@ -27,7 +27,7 @@ export default {
     passport.authenticate("login"),
     (req, res) => {
       req.app.locals.userLogged = req.body.email;
-      res.json({ userLogged: req.body.email });
+      res.redirect(`/user/${req.body.email}/me`);
     },
   ],
   logoutUser(req, res) {

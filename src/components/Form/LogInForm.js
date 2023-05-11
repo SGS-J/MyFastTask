@@ -1,5 +1,6 @@
 import { useEffect, useReducer } from "react";
 import Form from "./Form";
+import { useRouter } from "next/router";
 
 const initialState = {
   email: "",
@@ -17,7 +18,8 @@ const reducer = (state, action) => {
   }
 };
 
-export default function LogInForm({ submitUser }) {
+export default function LogInForm() {
+  const router = useRouter();
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleChange = (type, value) => {
@@ -27,9 +29,14 @@ export default function LogInForm({ submitUser }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log(res);
-      const { userLogged } = res.data;
-      submitUser(userLogged);
+      const res = await fetch("/user/login", {
+        method: "POST",
+        body: JSON.stringify(state),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      router.push(res.url);
     } catch (err) {
       alert("Incorrect user or password!");
     }

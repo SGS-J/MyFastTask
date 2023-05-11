@@ -27,7 +27,7 @@ app
 
     server.listen(port, () => {
       ENV !== "production" &&
-        console.log(`> Server ready on http://${hostname}/${port}`);
+        console.log(`> Server ready on http://${hostname}:${port}`);
     });
   })
   .catch((ex) => {
