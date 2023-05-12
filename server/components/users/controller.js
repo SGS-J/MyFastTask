@@ -26,8 +26,7 @@ export default {
   loginUser: [
     passport.authenticate("login"),
     (req, res) => {
-      req.app.locals.userLogged = req.body.email;
-      res.redirect(`/user/${req.body.email}/me`);
+      res.redirect("/user/me");
     },
   ],
   logoutUser(req, res) {
@@ -36,7 +35,7 @@ export default {
     res.redirect("/login");
   },
   async getUser(req, res) {
-    if (req.params.userEmail === req.app.locals.userLogged) {
+    try {
       const user = await userModel.getUserByEmail(req.params.userEmail);
       await res.json({
         name: user.name,
@@ -46,8 +45,8 @@ export default {
         },
         UIColor: user.UIColor,
       });
-    } else {
-      res.redirect(`/user/${req.app.locals.userLogged}/me`);
+    } catch (error) {
+      res.status(400).end();
     }
   },
   updateUser: [
@@ -62,14 +61,12 @@ export default {
         avatar,
       });
       if (ok) {
-        if (name) req.app.locals.userLogged = name;
         res.json({ message: "You've updated your data!" });
       } else res.status(400).end();
     },
   ],
   confirmUnauthentication(req, res, next) {
-    if (req.isAuthenticated())
-      res.redirect(`/user/${req.app.locals.userLogged}/me`);
+    if (req.isAuthenticated()) res.redirect("/user/me");
     else res.end();
   },
   verifyAuthentication(req, res, next) {
