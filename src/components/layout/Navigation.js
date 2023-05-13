@@ -19,23 +19,22 @@ function NavbarNotLogged() {
   );
 }
 
-function NavbarLogged({ logoutUser, userLogged }) {
-  const baseUrl = String("/user/" + userLogged);
+function NavbarLogged({ logoutUser }) {
   return (
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <Link className="nav-link" href={`${baseUrl}/me`}>
+          <Link className="nav-link" href="/user/me">
             Me
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" href={`${baseUrl}/tasks`}>
+          <Link className="nav-link" href="/user/tasks">
             Tasks
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" href={`${baseUrl}/config`}>
+          <Link className="nav-link" href="/user/config">
             Configuration
           </Link>
         </li>
@@ -51,7 +50,7 @@ function NavbarLogged({ logoutUser, userLogged }) {
 
 export default function Navigation({ userLogged, submitUser }) {
   const logoutUser = async () => {
-    submitUser("");
+    submitUser();
   };
 
   return (
@@ -73,7 +72,7 @@ export default function Navigation({ userLogged, submitUser }) {
           <span className="navbar-toggler-icon" />
         </button>
         {userLogged ? (
-          <NavbarLogged logoutUser={logoutUser} userLogged={userLogged} />
+          <NavbarLogged logoutUser={logoutUser} />
         ) : (
           <NavbarNotLogged />
         )}

@@ -30,13 +30,12 @@ export default {
     },
   ],
   logoutUser(req, res) {
-    req.app.locals.userLogged = "";
     req.logout();
     res.redirect("/login");
   },
   async getUser(req, res) {
     try {
-      const user = await userModel.getUserByEmail(req.params.userEmail);
+      const user = await userModel.getUserByEmail(req.session.passport.user);
       await res.json({
         name: user.name,
         avatar: {
@@ -46,14 +45,14 @@ export default {
         UIColor: user.UIColor,
       });
     } catch (error) {
-      res.status(400).end();
+      await res.json({ name: "" });
     }
   },
   updateUser: [
     formHandler.uploadFields(),
     async (req, res) => {
       const { name, gender, birthday, UIColor, avatar } = req.body;
-      const ok = await userModel.updateUser(req.app.locals.userLogged, {
+      const ok = await userModel.updateUser(req.session.passport.user, {
         name,
         gender,
         birthday,

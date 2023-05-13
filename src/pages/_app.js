@@ -1,7 +1,8 @@
 import "@/styles/index.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Head from "next/head";
-import Navigation from "@/components/layout/Navigation";
+import Layout from "@/components/Layout";
+import useUser from "@/hooks/useUser";
 import { useEffect } from "react";
 
 export default function App({ Component, pageProps }) {
@@ -16,8 +17,9 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>My Fast Task</title>
       </Head>
-      <Navigation />
-      <Component {...pageProps} />;
+      <Layout>
+        <Component {...pageProps} />;
+      </Layout>
     </>
   );
 }
