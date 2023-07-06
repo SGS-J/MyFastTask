@@ -2,7 +2,6 @@ import "@/styles/index.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import useUser from "@/hooks/useUser";
 import { useEffect } from "react";
 
 export default function App({ Component, pageProps }) {

@@ -1,26 +1,22 @@
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import useSWR from "swr";
 
-export default function useUser({ redirectTo } = {}) {
-  const [userLogged, setUserLogged] = useState("");
-  const router = useRouter();
-
-  const requestData = async () => {
-    try {
-      const res = await fetch("/user/me");
-      const { name } = await res.json();
-      setUserLogged(name);
-    } catch (error) {
-      setUserLogged("");
-    }
-  };
-
-  requestData();
+export default function useUser({
+  redirectTo = "",
+  redirectIfFound = false,
+} = {}) {
+  const { data: user, mutate: mutateUser } = useSWR("/user/me");
 
   useEffect(() => {
-    if (!redirectTo) return;
-    if (!userLogged) router.push(redirectTo);
-  }, [userLogged, redirectTo]);
+    if (!redirectTo || !user) return;
 
-  return userLogged;
+    if (
+      (redirectTo && !redirectIfFound && !user?.isLoggedIn) ||
+      (redirectIfFound && user?.isLoggedIn)
+    ) {
+      Router.push(redirectTo);
+    }
+  }, [user, redirectIfFound, redirectTo]);
+
+  return { user, mutateUser };
 }
